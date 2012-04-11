@@ -1,0 +1,43 @@
+!!!
+
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=UTF-8'}
+    %meta{:name => 'viewport', :content => "width=1000, initial-scale=1"}
+    
+    %title= @title
+    
+    = stylesheets "screen"
+    = javascripts "jquery", "site"
+    
+    /[if lt IE 9]
+      = javascripts "html5"
+    
+  %body{ :class => @body_class }
+    #page
+      %header#header
+        .center
+          = link_to img("logo.png"), "/"
+
+      %nav#primary-nav
+        %ul
+          = navigation_item "Home", "/"
+          = navigation_item "About", "#"
+          = navigation_item "Contact", "#"
+
+      %section.content
+        = yield
+
+      .push
+
+    %footer#footer
+      .center
+        %p.copyright
+          = link_to "Privacy", "/privacy"
+          |
+          = link_to "Disclaimer", "/disclaimer"
+          | Copyright &copy; 2012 ...
+
+        %p.attribution
+          = link_to "Attribution", "#"
+          
